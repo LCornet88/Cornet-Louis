@@ -261,6 +261,29 @@ footer {
     color: #ef4444;
 }
 
+.form-error {
+    margin-top: 8px;
+    color: #b91c1c;
+    font-size: 13px;
+}
+
+.nav-user {
+    display: inline-flex;
+    align-items: center;
+    margin-left: 16px;
+    font-weight: 600;
+    color: #111827;
+}
+
+.nav-user::before {
+    content: "";
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #111827;
+    margin-right: 10px;
+}
+
 .form-input,
 .form-textarea,
 .form-select {

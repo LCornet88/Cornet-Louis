@@ -6,6 +6,7 @@
 
     $message = '';
     $errors = [];
+    $fieldErrors = [];
     $success = false;
     
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -18,26 +19,34 @@
         // Validation
         if (empty($email)) {
             $errors[] = "L'email est obligatoire.";
+            $fieldErrors['email'] = "L'email est obligatoire.";
         } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $errors[] = "L'email n'est pas valide.";
+            $fieldErrors['email'] = "L'email n'est pas valide.";
         }
 
         if (empty($pseudonyme)) {
             $errors[] = "Le pseudonyme est obligatoire.";
+            $fieldErrors['pseudonyme'] = "Le pseudonyme est obligatoire.";
         } elseif (strlen($pseudonyme) < 3) {
             $errors[] = "Le pseudonyme doit contenir au moins 3 caractères.";
+            $fieldErrors['pseudonyme'] = "Le pseudonyme doit contenir au moins 3 caractères.";
         }
 
         if (empty($password)) {
             $errors[] = "Le mot de passe est obligatoire.";
+            $fieldErrors['password'] = "Le mot de passe est obligatoire.";
         } elseif (strlen($password) < 8) {
             $errors[] = "Le mot de passe doit contenir au moins 8 caractères.";
+            $fieldErrors['password'] = "Le mot de passe doit contenir au moins 8 caractères.";
         }
 
         if (empty($confirm_password)) {
             $errors[] = "La confirmation du mot de passe est obligatoire.";
+            $fieldErrors['confirm_password'] = "La confirmation du mot de passe est obligatoire.";
         } elseif ($password !== $confirm_password) {
             $errors[] = "Les mots de passe ne correspondent pas.";
+            $fieldErrors['confirm_password'] = "Les mots de passe ne correspondent pas.";
         }
 
         if (empty($errors)) {
@@ -80,24 +89,16 @@
         </div>
     <?php endif; ?>
     
-    <?php if (!empty($errors)): ?>
-        <div class="alert alert-error">
-            <p class="alert-title">Erreurs de validation :</p>
-            <ul class="alert-list">
-                <?php foreach ($errors as $error): ?>
-                    <li><?= $error ?></li>
-                <?php endforeach; ?>
-            </ul>
-        </div>
-    <?php endif; ?>
-<main>
 
-    
+
     <div class="card card-form">
         <form method="POST" style="max-width: 600px;">
             <div class="form-group">
                 <label class="form-label">Adresse Email <span class="form-required">*</span></label>
                 <input type="email" name="email" placeholder="Ex: john.doe@example.com" value="<?= htmlspecialchars($_POST['email'] ?? '') ?>" class="form-input">
+                <?php if (!empty($fieldErrors['email'])): ?>
+                    <p class="form-error"><?= htmlspecialchars($fieldErrors['email']) ?></p>
+                <?php endif; ?>
             </div>
 
             
@@ -105,19 +106,27 @@
                 <div>
                     <label class="form-label">Pseudonyme<span class="form-required">*</span></label>
                     <input type="text" name="pseudonyme" placeholder="Ex: JohnDoe" value="<?= htmlspecialchars($_POST['pseudonyme'] ?? '') ?>" class="form-input">
+                    <?php if (!empty($fieldErrors['pseudonyme'])): ?>
+                        <p class="form-error"><?= htmlspecialchars($fieldErrors['pseudonyme']) ?></p>
+                    <?php endif; ?>
                 </div>
 
 
                 <div>
                     <label class="form-label">Mot de passe <span class="form-required">*</span></label>
                     <input type="password" name="password" placeholder="Votre mot de passe" class="form-input">
-                    
+                    <?php if (!empty($fieldErrors['password'])): ?>
+                        <p class="form-error"><?= htmlspecialchars($fieldErrors['password']) ?></p>
+                    <?php endif; ?>
                 </div>
             </div>
             
             <div class="form-group">
                 <label class="form-label">Confirmation du mot de passe <span class="form-required">*</span></label>
                 <input type="password" name="confirm_password" placeholder="Confirmez votre mot de passe" class="form-input">
+                <?php if (!empty($fieldErrors['confirm_password'])): ?>
+                    <p class="form-error"><?= htmlspecialchars($fieldErrors['confirm_password']) ?></p>
+                <?php endif; ?>
             </div>
             
     

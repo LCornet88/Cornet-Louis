@@ -22,9 +22,20 @@ session_start();
             <ul>
                 <li><a href="index.php" class="active">Accueil</a></li>
                 <li><a href="index.php">Catalogue</a></li>
-                <li><a href="ajouterFilm.php">Ajouter un film</a></li>
-                <li><a href="inscription.php">Inscription</a></li>
+
+            
+                    <li><a href="ajouterFilm.php">Ajouter</a></li>
+                
+
                 <li><a href="contact.php">Contact</a></li>
+
+                <?php if (!isset($_SESSION['utilisateur'])): ?>
+                    <li><a href="inscription.php">Inscription</a></li>
+                    <li><a href="connexion.php">Connexion</a></li>
+                <?php else: ?>
+                    <li class="nav-user">Bonjour, <?= htmlspecialchars($_SESSION['utilisateur']['pseudo']) ?></li>
+                    <li><a href="deconnexion.php">Déconnexion</a></li>
+                <?php endif; ?>
             </ul>
         </nav>
     </header>

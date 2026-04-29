@@ -8,6 +8,7 @@
 
     $message = '';
     $errors = [];
+    $fieldErrors = [];
     $success = false;
     
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -17,12 +18,15 @@
         // Validation
         if (empty($email)) {
             $errors[] = "L'email est obligatoire.";
+            $fieldErrors['email'] = "L'email est obligatoire.";
         } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $errors[] = "L'email n'est pas valide.";
+            $fieldErrors['email'] = "L'email n'est pas valide.";
         }
         
         if (empty($password)) {
             $errors[] = "Le mot de passe est obligatoire.";
+            $fieldErrors['password'] = "Le mot de passe est obligatoire.";
         }
         
         if (empty($errors)) {
@@ -56,30 +60,27 @@
         </div>
     <?php endif; ?>
     
-    <?php if (!empty($errors)): ?>
-        <div class="alert alert-error">
-            <p class="alert-title">Erreurs de validation :</p>
-            <ul class="alert-list">
-                <?php foreach ($errors as $error): ?>
-                    <li><?= $error ?></li>
-                <?php endforeach; ?>
-            </ul>
-        </div>
-    <?php endif; ?>
+  
     
     <div class="card card-form">
         <form method="POST" style="max-width: 600px;">
             <div class="form-group">
                 <label class="form-label">Adresse Email <span class="form-required">*</span></label>
                 <input type="email" name="email" placeholder="Ex: votre@email.com" value="<?= htmlspecialchars($_POST['email'] ?? '') ?>" class="form-input">
+                <?php if (!empty($fieldErrors['email'])): ?>
+                    <p class="form-error"><?= htmlspecialchars($fieldErrors['email']) ?></p>
+                <?php endif; ?>
             </div>
             
             <div class="form-group-row">
                 <div>
                     <label class="form-label">Mot de passe <span class="form-required">*</span></label>
                     <input type="password" name="password" class="form-input">
+                    <?php if (!empty($fieldErrors['password'])): ?>
+                        <p class="form-error"><?= htmlspecialchars($fieldErrors['password']) ?></p>
+                    <?php endif; ?>
                 </div>
-    
+            </div>
             
             <button type="submit" class="form-button">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
