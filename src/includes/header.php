@@ -16,8 +16,9 @@
         <nav>
             <ul>
                 <li><a href="index.php" class="active">Accueil</a></li>
-                <li><a href="#.php">Catalogue</a></li>
+                <li><a href="index.php">Catalogue</a></li>
                 <li><a href="ajouter-film.php">Ajouter un film</a></li>
+                <li><a href="inscription.php">Inscription</a></li>
                 <li><a href="contact.php">Contact</a></li>
             </ul>
         </nav>

@@ -29,7 +29,7 @@
                 
                 <!-- Contenu de la carte -->
                 <div class="card-content">
-                    <h2 class="card-title"><?= $film['titre'] ?></h2>
+                    <h2 class="card-title"><a href="detail-film.php?id=<?= $film['id'] ?>"><?= $film['titre'] ?></a></h2>
                     <p class="card-type"><?= $film['nom'] ?> • <?= convertirDuree($film['duree']) ?>min</p>
                     <p class="card-text"><?= substr($film['synopsis'], 0, 60) ?>...</p>
                     

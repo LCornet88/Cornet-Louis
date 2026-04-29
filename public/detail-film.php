@@ -10,7 +10,7 @@
     $film = false;
     
     if ($id && is_numeric($id) && (int)$id > 0) {
-        $film = findFilmById((int)$id);
+        $film = findFilmById();
     }
 ?>
 
