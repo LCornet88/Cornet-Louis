@@ -1,10 +1,15 @@
+<?php
+session_start();
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $titre ?></title>
-    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/../assets/css/style.css">
 </head>
 <body>
     <header>
@@ -17,7 +22,7 @@
             <ul>
                 <li><a href="index.php" class="active">Accueil</a></li>
                 <li><a href="index.php">Catalogue</a></li>
-                <li><a href="ajouter-film.php">Ajouter un film</a></li>
+                <li><a href="ajouterFilm.php">Ajouter un film</a></li>
                 <li><a href="inscription.php">Inscription</a></li>
                 <li><a href="contact.php">Contact</a></li>
             </ul>

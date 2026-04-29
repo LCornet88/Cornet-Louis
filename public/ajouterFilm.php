@@ -3,6 +3,8 @@
     include __DIR__.'/../src/includes/header.php';
     require_once __DIR__.'/../src/lib/function.php';
     require_once __DIR__.'/../src/repositories/filmRepository.php';
+    $films = findAllFilms();
+
     
     $genres = findAllGenres();
     $pays = findAllPays();

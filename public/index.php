@@ -3,6 +3,7 @@
     include __DIR__.'/../src/includes/header.php';
     require_once __DIR__.'/../src/lib/function.php';
     require_once __DIR__.'/../src/repositories/filmRepository.php';
+    require_once __DIR__.'/../src/repositories/utilisateurRepository.php';
     $films = findAllFilms();
 
 
@@ -29,13 +30,13 @@
                 
                 <!-- Contenu de la carte -->
                 <div class="card-content">
-                    <h2 class="card-title"><a href="detail-film.php?id=<?= $film['id'] ?>"><?= $film['titre'] ?></a></h2>
+                    <h2 class="card-title"><a href="detailFilm.php?id=<?= $film['id'] ?>"><?= $film['titre'] ?></a></h2>
                     <p class="card-type"><?= $film['nom'] ?> • <?= convertirDuree($film['duree']) ?>min</p>
                     <p class="card-text"><?= substr($film['synopsis'], 0, 60) ?>...</p>
                     
                     <!-- Boutons -->
                     <div class="card-actions">
-                        <a href="detail-film.php?id=<?= $film['id'] ?>" class="btn">Détails</a>
+                        <a href="detailFilm.php?id=<?= $film['id'] ?>" class="btn">Détails</a>
                     </div>
                 </div>
             </div>
