@@ -14,7 +14,7 @@ function findAllFilms() {
 }
 
 
-function findFilmById() {
+function findFilmById(int $id) {
     $connexion = getConnexion();
     $sql = "SELECT film.*, pays.nom as pays_nom, pays.initiale, genre.nom 
             FROM film 
