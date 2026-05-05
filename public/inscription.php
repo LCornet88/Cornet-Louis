@@ -77,70 +77,65 @@
     }
 ?>
 
-<main>
-    <h2>Créer un compte</h2>
-    <p>Rejoignez la communauté CinéSIO pour acceder à toutes les fonctionnalités.</p>
-    
-
-    <?php if ($success): ?>
-        <div class="alert alert-success">
-            <p class="alert-title"><?= $message ?></p>
-            <p class="alert-link"><a href="index.php">Retourner au catalogue</a></p>
+<main class="signup-page">
+    <div class="signup-container">
+        <div class="page-header">
+            <h2>Créer un compte</h2>
+            <p>Rejoignez la communauté CinéSIO pour accéder à toutes les fonctionnalités.</p>
         </div>
-    <?php endif; ?>
-    
 
-
-    <div class="card card-form">
-        <form method="POST" style="max-width: 600px;">
-            <div class="form-group">
-                <label class="form-label">Adresse Email <span class="form-required">*</span></label>
-                <input type="email" name="email" placeholder="Ex: john.doe@example.com" value="<?= htmlspecialchars($_POST['email'] ?? '') ?>" class="form-input">
-                <?php if (!empty($fieldErrors['email'])): ?>
-                    <p class="form-error"><?= htmlspecialchars($fieldErrors['email']) ?></p>
-                <?php endif; ?>
+        <?php if ($success): ?>
+            <div class="alert alert-success">
+                <p class="alert-title"><?= $message ?></p>
+                <p class="alert-link"><a href="index.php">Retourner au catalogue</a></p>
             </div>
+        <?php endif; ?>
 
-            
-            <div class="form-group-row">
-                <div>
-                    <label class="form-label">Pseudonyme<span class="form-required">*</span></label>
+        <div class="card card-form">
+            <form method="POST">
+                <div class="form-group">
+                    <label class="form-label">Adresse Email <span class="form-required">*</span></label>
+                    <input type="email" name="email" placeholder="Ex: john.doe@example.com" value="<?= htmlspecialchars($_POST['email'] ?? '') ?>" class="form-input">
+                    <?php if (!empty($fieldErrors['email'])): ?>
+                        <p class="form-error"><?= htmlspecialchars($fieldErrors['email']) ?></p>
+                    <?php endif; ?>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Pseudonyme <span class="form-required">*</span></label>
                     <input type="text" name="pseudonyme" placeholder="Ex: JohnDoe" value="<?= htmlspecialchars($_POST['pseudonyme'] ?? '') ?>" class="form-input">
                     <?php if (!empty($fieldErrors['pseudonyme'])): ?>
                         <p class="form-error"><?= htmlspecialchars($fieldErrors['pseudonyme']) ?></p>
                     <?php endif; ?>
                 </div>
 
+                <div class="form-group-row">
+                    <div>
+                        <label class="form-label">Mot de passe <span class="form-required">*</span></label>
+                        <input type="password" name="password" placeholder="Votre mot de passe" class="form-input">
+                        <?php if (!empty($fieldErrors['password'])): ?>
+                            <p class="form-error"><?= htmlspecialchars($fieldErrors['password']) ?></p>
+                        <?php endif; ?>
+                    </div>
 
-                <div>
-                    <label class="form-label">Mot de passe <span class="form-required">*</span></label>
-                    <input type="password" name="password" placeholder="Votre mot de passe" class="form-input">
-                    <?php if (!empty($fieldErrors['password'])): ?>
-                        <p class="form-error"><?= htmlspecialchars($fieldErrors['password']) ?></p>
-                    <?php endif; ?>
+                    <div>
+                        <label class="form-label">Confirmation <span class="form-required">*</span></label>
+                        <input type="password" name="confirm_password" placeholder="Confirmez votre mot de passe" class="form-input">
+                        <?php if (!empty($fieldErrors['confirm_password'])): ?>
+                            <p class="form-error"><?= htmlspecialchars($fieldErrors['confirm_password']) ?></p>
+                        <?php endif; ?>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="form-group">
-                <label class="form-label">Confirmation du mot de passe <span class="form-required">*</span></label>
-                <input type="password" name="confirm_password" placeholder="Confirmez votre mot de passe" class="form-input">
-                <?php if (!empty($fieldErrors['confirm_password'])): ?>
-                    <p class="form-error"><?= htmlspecialchars($fieldErrors['confirm_password']) ?></p>
-                <?php endif; ?>
-            </div>
-            
-    
-            
-            
-            
-            <button type="submit" class="form-button">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-add" viewBox="0 0 16 16">
-  <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0m-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0M8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4"/>
-  <path d="M8.256 14a4.5 4.5 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10q.39 0 .74.025c.226-.341.496-.65.804-.918Q8.844 9.002 8 9c-5 0-6 3-6 4s1 1 1 1z"/>
-</svg> M'inscrire maintenant
-            </button>
-            <p> Déja un compte ? <a href="connexion.php">Connectez-vous</a></p>
-        </form>
+
+                <button type="submit" class="form-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-add" viewBox="0 0 16 16">
+                        <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0m-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0M8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4"/>
+                        <path d="M8.256 14a4.5 4.5 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10q.39 0 .74.025c.226-.341.496-.65.804-.918Q8.844 9.002 8 9c-5 0-6 3-6 4s1 1 1 1z"/>
+                    </svg> M'inscrire maintenant
+                </button>
+                <p class="form-footer">Déjà un compte ? <a href="connexion.php">Connectez-vous</a></p>
+            </form>
+        </div>
     </div>
 </main>
 <?php

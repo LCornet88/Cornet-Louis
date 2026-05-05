@@ -316,13 +316,106 @@ footer {
     background-color: #374151;
 }
 
-/* Detail page styles */
-.card-detail {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0;
-    padding: 0;
-    overflow: hidden;
+/* Login page styles */
+.login-page,
+.signup-page {
+    padding: 40px 20px;
+    min-height: calc(100vh - 120px); /* Adjust based on header/footer height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f8fafc;
+}
+
+.login-container,
+.signup-container,
+.logout-container {
+    background-color: #ffffff;
+    border-radius: 16px;
+    padding: 40px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.03);
+    max-width: 520px;
+    width: 100%;
+    text-align: center;
+}
+
+.login-page h2,
+.signup-page h2 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #111827;
+}
+
+.login-page > p,
+.signup-page > p,
+.page-header p {
+    color: #6b7280;
+    font-size: 15px;
+    margin-bottom: 30px;
+    line-height: 1.7;
+}
+
+.page-header {
+    text-align: left;
+    margin-bottom: 24px;
+}
+
+.page-header h2 {
+    margin-bottom: 8px;
+}
+
+.page-header p {
+    margin: 0;
+}
+
+.form-footer {
+    margin-top: 24px;
+    font-size: 14px;
+    color: #6b7280;
+}
+
+.form-footer a {
+    color: #111827;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.form-footer a:hover {
+    text-decoration: underline;
+}
+
+/* Logout page styles */
+.logout-page {
+    padding: 40px 20px;
+    min-height: calc(100vh - 120px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #f3f4f6 0%, #ffffff 100%);
+}
+
+.logout-container {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 40px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.03);
+    max-width: 420px;
+    width: 100%;
+    text-align: center;
+}
+
+.logout-page h2 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #111827;
+}
+
+.logout-page > p {
+    color: #6b7280;
+    font-size: 14px;
+    margin-bottom: 10px;
 }
 
 .card-detail-image {
